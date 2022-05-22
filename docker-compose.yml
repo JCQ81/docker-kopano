@@ -14,7 +14,7 @@ services:
       - kopano-db:/var/lib/mysql
   kopano:
     container_name: kopano
-    image: jcq81/kopano-docker
+    image: jcq81/docker-kopano
     depends_on:
       - kopano-db
     ports:
