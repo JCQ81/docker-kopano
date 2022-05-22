@@ -1,0 +1,38 @@
+version: '3'
+services:
+  kopano-db:
+    container_name: kopano-db
+    image: mysql:5.7
+    restart: always
+    environment:
+      MYSQL_DATABASE: 'kopano'
+      MYSQL_USER: 'kopano'
+      MYSQL_PASSWORD: 'My@weS0mePaSS'
+      MYSQL_ROOT_PASSWORD: 'My@weS0meRo0tPaSS'
+      MYSQL_ROOT_HOST: '%'
+    volumes:
+      - kopano-db:/var/lib/mysql
+  kopano:
+    container_name: kopano-test
+    image: jcq81/kopano-docker
+    depends_on:
+      - kopano-db
+    ports:
+      - '25:25'
+      - '80:80'
+      - '443:443'
+    environment:
+      SRVCFG_MYSQL_HOST: 'kopano-db'
+      SRVCFG_MYSQL_DATABASE: 'kopano'
+      SRVCFG_MYSQL_USER: 'kopano'
+      SRVCFG_MYSQL_PASSWORD: 'My@weS0mePaSS'
+      POSTFIX_VIRTUAL_MAILBOX_DOMAINS: 'example.com'
+    volumes:
+      - kopano-conf:/var/lib/mysql
+    links:
+      - kopano-db
+volumes:
+  kopano-db:
+    driver: local
+  kopano-conf:
+    driver: local
