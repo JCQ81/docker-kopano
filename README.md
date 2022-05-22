@@ -9,6 +9,10 @@ An all-in-one kopano container running a minimal setup of Kopano consisting of K
     docker build -t jcq81/docker-kopano .
     docker-compose up -d
 
+Adding a user:
+
+    docker exec -t kopano kopano-admin -c test -p testing123 -f 'Test' -e test@example.com
+
 This setup published both ports 80 and 443 with an automatically created self signed certificate. When publishing this setup to the internet it is (obviously) highly recommended to not publish any insecure access by e.g. using a reverse proxy like Apache2, NGINX or HAProxy providing secure access using a certificate, and internally forwarding to port 80.
 
 **Manual setup**
