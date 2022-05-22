@@ -13,7 +13,7 @@ services:
     volumes:
       - kopano-db:/var/lib/mysql
   kopano:
-    container_name: kopano-test
+    container_name: kopano
     image: jcq81/kopano-docker
     depends_on:
       - kopano-db
