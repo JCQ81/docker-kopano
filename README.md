@@ -2,6 +2,8 @@
 
 An all-in-one kopano container running a minimal setup of Kopano consisting of Kopano-Server, Kopano-WebApp and Z-Push for ActiveSync. Additionally it runs services required for a fully functional environment such as Apache2 as webserver and Postfix as MTA. The only additional external requirement is an MySQL server.
 
+The image is also available on docker hub: https://hub.docker.com/r/jcq81/docker-kopano
+
 **Quick setup (docker-compose with MySQL)**
 
     git clone jcq81/docker-kopano
