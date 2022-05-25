@@ -44,8 +44,10 @@ while ! mysqladmin ping -s -h$MYSQL_HOST -u$MYSQL_USER -p$MYSQL_PASS; do
   echo -n "."
 done
 
+cp /etc/resolv.conf /var/spool/postfix/etc/
 /usr/sbin/rsyslogd
 /usr/sbin/kopano-dagent -l &
+/usr/sbin/kopano-spooler &
 /usr/sbin/postfix start
 /usr/sbin/apachectl start
 /usr/sbin/kopano-server
