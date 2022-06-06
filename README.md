@@ -37,3 +37,8 @@ For a more detailed configuration like being able to configure your own certific
     docker run -d --name kopano \
     -v kopano-conf:/usr/share/conf \
     jcq81/docker-kopano
+
+**Brave browser**
+
+When using Brave browser disable anti-fingerprint:
+https://forum.kopano.io/topic/4006/solved-fingerprint-issue-with-brave/2
