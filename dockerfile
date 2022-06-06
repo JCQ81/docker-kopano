@@ -28,6 +28,9 @@ RUN     /usr/sbin/a2enmod ssl \
         && sed -i '2 i Alias \/Microsoft-Server-ActiveSync \/usr\/share\/z-push\/index.php' /etc/apache2/sites-enabled/kopano-webapp.conf \
         && echo '<html><head><meta http-equiv="refresh" content="0;url=./webapp" /></head></html>' >/var/www/html/index.html
 
+RUN     sed -i 's/z-index: 2;//g' /usr/share/kopano-webapp/plugins/htmleditor-jodit/resources/css/htmleditor-jodit.css \
+        && sed -i 's/.x-combo-list{border-color:#918F90}/.x-combo-list{border-color:#918F90;z-index:9999 !important}/g' /usr/share/kopano-webapp/client/resources/css/kopano.css
+
 ENV     SRVCFG_MYSQL_HOST="" \
         SRVCFG_MYSQL_PORT="" \
         SRVCFG_MYSQL_USER="" \
