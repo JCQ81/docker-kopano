@@ -30,7 +30,9 @@ RUN     /usr/sbin/a2enmod ssl \
 
 RUN     sed -i 's/Arial Narrow;//g' /usr/share/kopano-webapp/client/fingerprint.js \
         && sed -i 's/z-index: 2;//g' /usr/share/kopano-webapp/plugins/htmleditor-jodit/resources/css/htmleditor-jodit.css \
-        && sed -i 's/.x-combo-list{border-color:#918F90}/.x-combo-list{border-color:#918F90;z-index:9999 !important}/g' /usr/share/kopano-webapp/client/resources/css/kopano.css
+        && sed -i -e 's/.x-combo-list{border-color:#918F90}/.x-combo-list{border-color:#918F90;z-index:9999 !important}/g' \
+                  -e 's/background-color:#ebeaeb}.x-border-layout-ct/background-color:#ebeaeb;z-index:9999 !important}.x-border-layout-ct/g' \
+                  /usr/share/kopano-webapp/client/resources/css/kopano.css
 
 ENV     SRVCFG_MYSQL_HOST="" \
         SRVCFG_MYSQL_PORT="" \
